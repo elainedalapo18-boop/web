@@ -9,6 +9,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         
+        :root {
+            --brand-purple: #c147e9;
+            --brand-lavender: #e5b8f4;
+            --brand-dark: #2d033b;
+            --brand-soft: #fcf4ff;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
@@ -16,25 +23,31 @@
         }
 
         .hero-gradient {
-            background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
+            background: linear-gradient(135deg, #c147e9 0%, #810ca8 100%);
         }
+
+        .text-brand-purple { color: var(--brand-purple); }
+        .bg-brand-purple { background-color: var(--brand-purple); }
+        .bg-brand-lavender { background-color: var(--brand-lavender); }
+        .border-brand-lavender { border-color: var(--brand-lavender); }
+        .text-brand-dark { color: var(--brand-dark); }
+        .bg-brand-dark { background-color: var(--brand-dark); }
 
         .service-card:hover {
             transform: translateY(-5px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-color: #a78bfa;
+            border-color: var(--brand-purple);
         }
 
         .sticky-nav {
             backdrop-filter: blur(12px);
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.9);
         }
 
-        .lavender-soft {
-            background-color: #f5f3ff;
+        .logo-glow {
+            filter: drop-shadow(0 0 10px rgba(193, 71, 233, 0.4));
         }
 
-        /* Prevent horizontal scroll on some mobile browsers */
         html, body {
             max-width: 100%;
             overflow-x: hidden;
@@ -46,39 +59,39 @@
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 sticky-nav border-b border-purple-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center space-x-2">
-                    <div class="bg-purple-600 p-2 rounded-lg shrink-0">
-                        <i class="fas fa-print text-white text-sm"></i>
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="https://i.imgur.com/9o3z7ed.jpeg" alt="RWP Logo" class="h-12 w-12 rounded-full shadow-sm border border-purple-200">
+                    <div class="flex flex-col">
+                        <span class="text-lg font-bold tracking-tight text-brand-dark leading-none">RIEL Works</span>
+                        <span class="text-[10px] font-bold text-brand-purple tracking-[0.3em] uppercase mt-1">Printing</span>
                     </div>
-                    <span class="text-lg sm:text-xl font-bold tracking-tight text-slate-800 whitespace-nowrap">Riel Works <span class="text-purple-600">Printing</span></span>
                 </div>
                 
-                <!-- Desktop Nav -->
-                <div class="hidden md:flex space-x-6 lg:space-x-8 font-medium items-center">
-                    <a href="#services" class="hover:text-purple-600 transition text-sm lg:text-base">Services</a>
-                    <a href="#about" class="hover:text-purple-600 transition text-sm lg:text-base">About</a>
-                    <a href="#ordering" class="hover:text-purple-600 transition text-sm lg:text-base">How to Order</a>
-                    <a href="https://m.me/61558154681608" target="_blank" class="bg-purple-600 text-white px-5 py-2 rounded-full hover:bg-purple-700 transition shadow-md shadow-purple-200 text-sm lg:text-base">Message Us</a>
+                <div class="hidden md:flex space-x-8 font-medium items-center">
+                    <a href="#services" class="text-slate-600 hover:text-brand-purple transition text-sm">Services</a>
+                    <a href="#about" class="text-slate-600 hover:text-brand-purple transition text-sm">About</a>
+                    <a href="#ordering" class="text-slate-600 hover:text-brand-purple transition text-sm">Ordering</a>
+                    <a href="https://m.me/61558154681608" target="_blank" class="bg-brand-purple text-white px-6 py-2.5 rounded-full hover:opacity-90 transition shadow-md shadow-purple-200 text-sm font-bold">
+                        Message Us
+                    </a>
                 </div>
 
-                <!-- Mobile Toggle -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-slate-600 p-2 focus:outline-none" aria-label="Toggle menu">
+                    <button id="mobile-menu-button" class="text-brand-purple p-2 focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-purple-50 absolute w-full left-0 shadow-xl transition-all duration-300">
-            <div class="px-4 py-6 space-y-4">
-                <a href="#services" class="block text-slate-700 font-medium text-lg px-2">Services</a>
-                <a href="#about" class="block text-slate-700 font-medium text-lg px-2">About</a>
-                <a href="#ordering" class="block text-slate-700 font-medium text-lg px-2">How to Order</a>
-                <div class="pt-2 border-t border-slate-100">
-                    <a href="https://m.me/61558154681608" target="_blank" class="block bg-purple-600 text-white px-4 py-3 rounded-xl font-bold text-center">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-purple-50 absolute w-full left-0 shadow-2xl">
+            <div class="px-6 py-8 space-y-6">
+                <a href="#services" class="block text-slate-700 font-bold text-xl">Our Services</a>
+                <a href="#about" class="block text-slate-700 font-bold text-xl">About RWP</a>
+                <a href="#ordering" class="block text-slate-700 font-bold text-xl">How to Order</a>
+                <div class="pt-4 border-t border-purple-50">
+                    <a href="https://m.me/61558154681608" target="_blank" class="block bg-brand-purple text-white px-4 py-4 rounded-2xl font-bold text-center text-lg">
                         <i class="fab fa-facebook-messenger mr-2"></i> Message Us
                     </a>
                 </div>
@@ -87,194 +100,144 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-gradient text-white pt-16 pb-20 lg:pt-32 lg:pb-40 overflow-hidden relative">
+    <header class="hero-gradient text-white pt-12 pb-20 lg:pt-24 lg:pb-32 overflow-hidden relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-3xl text-center md:text-left">
-                <span class="inline-block bg-white/10 text-purple-100 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md border border-white/10">
-                    <i class="fas fa-location-dot mr-1"></i> Based in Surigao City, Philippines
-                </span>
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-[1.1]">
-                    You think, <br class="hidden sm:block"><span class="text-purple-200">we make.</span>
-                </h1>
-                <p class="text-lg sm:text-xl text-purple-100 mb-10 leading-relaxed opacity-90 max-w-2xl mx-auto md:mx-0">
-                    Professional printing solutions from personalized home decor to high-impact branding. We bring your vision to life with precision.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="https://m.me/61558154681608" target="_blank" class="px-8 py-4 bg-white text-purple-700 hover:bg-purple-50 rounded-2xl font-bold text-center transition shadow-xl text-lg">
-                        <i class="fab fa-facebook-messenger mr-2"></i> Order Now
-                    </a>
-                    <a href="#services" class="px-8 py-4 bg-purple-500/20 hover:bg-purple-500/30 border border-white/20 rounded-2xl font-bold text-center transition text-lg">
-                        View Services
-                    </a>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <span class="inline-block bg-white/20 text-purple-50 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md border border-white/20">
+                        <i class="fas fa-sparkles mr-1"></i> Professional Custom Printing
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                        You think, <br><span class="text-brand-lavender">we make.</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-purple-50 mb-10 leading-relaxed opacity-90 max-w-2xl mx-auto lg:mx-0">
+                        High-quality wall decor and personalized souvenirs. We bring your vision to life with the vibrant purple essence of your brand.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="https://m.me/61558154681608" target="_blank" class="px-10 py-4 bg-white text-brand-purple hover:bg-purple-50 rounded-2xl font-bold text-center transition shadow-2xl text-lg">
+                            <i class="fab fa-facebook-messenger mr-2"></i> Order Now
+                        </a>
+                        <a href="#services" class="px-10 py-4 bg-white/10 hover:bg-white/20 border border-white/30 rounded-2xl font-bold text-center transition text-lg backdrop-blur-sm">
+                            View Services
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center order-1 lg:order-2">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-white/20 rounded-full blur-3xl group-hover:bg-purple-400/30 transition-all duration-500"></div>
+                        <img src="https://i.imgur.com/9o3z7ed.jpeg" alt="Riel Works Logo" class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full shadow-2xl border-4 border-white/30 logo-glow">
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Decorative Shapes -->
-        <div class="absolute -bottom-24 -right-24 w-64 h-64 sm:w-96 sm:h-96 bg-white/10 rounded-full blur-3xl"></div>
-        <div class="absolute -top-12 -left-12 w-48 h-48 bg-purple-400/10 rounded-full blur-2xl"></div>
     </header>
 
-    <!-- Stats Section - Responsive Flex -->
-    <div id="about" class="bg-white border-b border-purple-50 py-10 lg:py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-                <div class="flex items-center sm:justify-center space-x-4 p-4 rounded-2xl bg-purple-50/50 sm:bg-transparent">
-                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 shrink-0">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-lg font-bold text-purple-900 leading-tight">Always Open</div>
-                        <div class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Ready to help</div>
-                    </div>
-                </div>
-                <div class="flex items-center sm:justify-center space-x-4 p-4 rounded-2xl bg-purple-50/50 sm:bg-transparent">
-                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 shrink-0">
-                        <i class="fas fa-truck-fast"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-lg font-bold text-purple-900 leading-tight">Nationwide</div>
-                        <div class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Shipping PH</div>
-                    </div>
-                </div>
-                <div class="flex items-center sm:justify-center space-x-4 p-4 rounded-2xl bg-purple-50/50 sm:bg-transparent">
-                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 shrink-0">
-                        <i class="fas fa-wand-magic-sparkles"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-lg font-bold text-purple-900 leading-tight">Custom Made</div>
-                        <div class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Your Design</div>
-                    </div>
-                </div>
-                <div class="flex items-center sm:justify-center space-x-4 p-4 rounded-2xl bg-purple-50/50 sm:bg-transparent">
-                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 shrink-0">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-lg font-bold text-purple-900 leading-tight">Local Pickup</div>
-                        <div class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Surigao City</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Services Grid -->
-    <section id="services" class="py-16 sm:py-24 lavender-soft">
+    <section id="services" class="py-20 lg:py-32" style="background-color: var(--brand-soft);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Core Services</h2>
-                <div class="w-16 h-1.5 bg-purple-600 mx-auto rounded-full"></div>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-5xl font-bold text-brand-dark mb-4">Our Specialties</h2>
+                <div class="w-20 h-1.5 bg-brand-purple mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Wall Decor -->
-                <div class="service-card bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-purple-50 flex flex-col h-full">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-image text-xl sm:text-2xl"></i>
+                <div class="service-card bg-white p-8 rounded-[2rem] shadow-sm border border-purple-100 flex flex-col h-full">
+                    <div class="w-16 h-16 bg-brand-soft text-brand-purple rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-image text-2xl"></i>
                     </div>
-                    <h3 class="text-xl sm:text-2xl font-bold mb-4 text-slate-800">Wall Decor & Portraits</h3>
-                    <ul class="space-y-3 text-slate-600 mb-8 flex-grow">
-                        <li class="flex items-center"><i class="fas fa-circle-check text-purple-500 mr-2 text-sm"></i>Sizes: A3, A4, and A5</li>
-                        <li class="flex items-center"><i class="fas fa-circle-check text-purple-500 mr-2 text-sm"></i>3mm Sintra Board Material</li>
-                        <li class="flex items-center"><i class="fas fa-circle-check text-purple-500 mr-2 text-sm"></i>Sleek, Modern & Lightweight</li>
-                        <li class="flex items-center"><i class="fas fa-circle-check text-purple-500 mr-2 text-sm"></i>Photo Restoration Service</li>
+                    <h3 class="text-2xl font-bold mb-4 text-brand-dark">Wall Decor & Portraits</h3>
+                    <p class="text-slate-600 mb-6 flex-grow">A3, A4, or A5 prints mounted on durable 3mm Sintra boards for a modern finish.</p>
+                    <ul class="space-y-3 text-slate-500 mb-8 text-sm">
+                        <li><i class="fas fa-check text-brand-purple mr-2"></i>Sintra Board Mounting</li>
+                        <li><i class="fas fa-check text-brand-purple mr-2"></i>Vibrant Color Reproduction</li>
+                        <li><i class="fas fa-check text-brand-purple mr-2"></i>Waterproof & Dustproof</li>
                     </ul>
-                    <a href="https://m.me/61558154681608" target="_blank" class="w-full py-3 px-4 bg-purple-50 text-purple-700 rounded-xl font-bold text-center hover:bg-purple-600 hover:text-white transition">
-                        Order Wall Decor
+                    <a href="https://m.me/61558154681608" target="_blank" class="w-full py-4 bg-brand-purple text-white rounded-xl font-bold text-center hover:opacity-90 transition">
+                        Order Now
                     </a>
                 </div>
 
                 <!-- Souvenirs -->
-                <div class="service-card bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-purple-50 flex flex-col h-full">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-fuchsia-100 text-fuchsia-600 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-gift text-xl sm:text-2xl"></i>
+                <div class="service-card bg-white p-8 rounded-[2rem] shadow-sm border border-purple-100 flex flex-col h-full">
+                    <div class="w-16 h-16 bg-brand-soft text-brand-purple rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-gift text-2xl"></i>
                     </div>
-                    <h3 class="text-xl sm:text-2xl font-bold mb-4 text-slate-800">Personalized Items</h3>
-                    <ul class="space-y-3 text-slate-600 mb-8 flex-grow">
-                        <li class="flex items-center"><i class="fas fa-circle-check text-fuchsia-500 mr-2 text-sm"></i>Custom Ref Magnets</li>
-                        <li class="flex items-center"><i class="fas fa-circle-check text-fuchsia-500 mr-2 text-sm"></i>Keychains (from ₱30)</li>
-                        <li class="flex items-center"><i class="fas fa-circle-check text-fuchsia-500 mr-2 text-sm"></i>Personalized Shot Glasses</li>
-                        <li class="flex items-center"><i class="fas fa-circle-check text-fuchsia-500 mr-2 text-sm"></i>Plaques & Trophies</li>
+                    <h3 class="text-2xl font-bold mb-4 text-brand-dark">Personalized Gifts</h3>
+                    <p class="text-slate-600 mb-6 flex-grow">Custom keychains, magnets, and shot glasses perfect for any special occasion.</p>
+                    <ul class="space-y-3 text-slate-500 mb-8 text-sm">
+                        <li><i class="fas fa-check text-brand-purple mr-2"></i>Custom Ref Magnets</li>
+                        <li><i class="fas fa-check text-brand-purple mr-2"></i>Personalized Shot Glasses</li>
+                        <li><i class="fas fa-check text-brand-purple mr-2"></i>Corporate Giveaways</li>
                     </ul>
-                    <a href="https://m.me/61558154681608" target="_blank" class="w-full py-3 px-4 bg-fuchsia-50 text-fuchsia-700 rounded-xl font-bold text-center hover:bg-fuchsia-600 hover:text-white transition">
-                        Order Souvenirs
+                    <a href="https://m.me/61558154681608" target="_blank" class="w-full py-4 bg-brand-lavender text-brand-dark rounded-xl font-bold text-center hover:opacity-90 transition">
+                        Browse More
                     </a>
                 </div>
 
-                <!-- Commercial -->
-                <div class="service-card bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-purple-50 flex flex-col h-full">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-violet-100 text-violet-600 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-briefcase text-xl sm:text-2xl"></i>
+                <!-- Business -->
+                <div class="service-card bg-white p-8 rounded-[2rem] shadow-sm border border-purple-100 flex flex-col h-full">
+                    <div class="w-16 h-16 bg-brand-soft text-brand-purple rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-briefcase text-2xl"></i>
                     </div>
-                    <h3 class="text-xl sm:text-2xl font-bold mb-4 text-slate-800">Business Printing</h3>
-                    <ul class="space-y-3 text-slate-600 mb-8 flex-grow">
-                        <li class="flex items-center"><i class="fas fa-circle-check text-violet-500 mr-2 text-sm"></i>Durable Vinyl Stickers</li>
-                        <li class="flex items-center"><i class="fas fa-circle-check text-violet-500 mr-2 text-sm"></i>Bulk Promotional Items</li>
-                        <li class="flex items-center"><i class="fas fa-circle-check text-violet-500 mr-2 text-sm"></i>Custom Logo Design</li>
-                        <li class="flex items-center"><i class="fas fa-circle-check text-violet-500 mr-2 text-sm"></i>Layout & Branding</li>
+                    <h3 class="text-2xl font-bold mb-4 text-brand-dark">Business Essentials</h3>
+                    <p class="text-slate-600 mb-6 flex-grow">Vinyl stickers and branding materials to make your business stand out.</p>
+                    <ul class="space-y-3 text-slate-500 mb-8 text-sm">
+                        <li><i class="fas fa-check text-brand-purple mr-2"></i>Vinyl Logo Stickers</li>
+                        <li><i class="fas fa-check text-brand-purple mr-2"></i>Professional Layouts</li>
+                        <li><i class="fas fa-check text-brand-purple mr-2"></i>Bulk Printing Deals</li>
                     </ul>
-                    <a href="https://m.me/61558154681608" target="_blank" class="w-full py-3 px-4 bg-violet-50 text-violet-700 rounded-xl font-bold text-center hover:bg-violet-600 hover:text-white transition">
-                        Order Commercial
+                    <a href="https://m.me/61558154681608" target="_blank" class="w-full py-4 bg-brand-soft text-brand-purple border border-purple-100 rounded-xl font-bold text-center hover:bg-brand-lavender transition">
+                        Get a Quote
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Ordering Steps -->
-    <section id="ordering" class="py-16 sm:py-24 bg-white overflow-hidden">
+    <!-- Ordering Steps - Updated to Dark Purple Theme -->
+    <section id="ordering" class="py-20 lg:py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-purple-950 rounded-[2.5rem] p-8 sm:p-12 lg:p-20 text-white shadow-2xl relative">
-                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <!-- Main Dark Purple Container -->
+            <div class="bg-brand-dark rounded-[3rem] p-10 sm:p-20 text-white shadow-2xl relative overflow-hidden">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <h2 class="text-3xl sm:text-5xl font-bold mb-6 leading-tight">Ordering made <br><span class="text-purple-400">easy & fast.</span></h2>
-                        
-                        <div class="space-y-8 mt-10">
-                            <div class="flex gap-5">
-                                <div class="shrink-0 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center font-bold text-lg shadow-lg">1</div>
+                        <h2 class="text-4xl sm:text-5xl font-bold mb-12">How to <span class="text-brand-purple">Order</span></h2>
+                        <div class="space-y-12">
+                            <!-- Step 1 -->
+                            <div class="flex gap-6">
+                                <span class="w-12 h-12 rounded-xl bg-brand-purple flex items-center justify-center font-bold text-xl shrink-0 shadow-lg shadow-purple-500/20">1</span>
                                 <div>
-                                    <h4 class="font-bold text-xl mb-1">Send Inquiry</h4>
-                                    <p class="text-purple-200/80 leading-relaxed">Message us on Messenger or Email with your specific project details.</p>
+                                    <h4 class="font-bold text-xl mb-2 text-white">Send your details</h4>
+                                    <p class="text-purple-200 text-base leading-relaxed opacity-90">Message us your design, photo, or ideas directly on Facebook Messenger.</p>
                                 </div>
                             </div>
-                            <div class="flex gap-5">
-                                <div class="shrink-0 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center font-bold text-lg shadow-lg">2</div>
+                            <!-- Step 2 -->
+                            <div class="flex gap-6">
+                                <span class="w-12 h-12 rounded-xl bg-brand-purple flex items-center justify-center font-bold text-xl shrink-0 shadow-lg shadow-purple-500/20">2</span>
                                 <div>
-                                    <h4 class="font-bold text-xl mb-1">Confirm Design</h4>
-                                    <p class="text-purple-200/80 leading-relaxed">Provide your own files or work with our designer to craft the perfect layout.</p>
+                                    <h4 class="font-bold text-xl mb-2 text-white">Confirm Layout</h4>
+                                    <p class="text-purple-200 text-base leading-relaxed opacity-90">Our team will send a digital preview for your approval before we start printing.</p>
                                 </div>
                             </div>
-                            <div class="flex gap-5">
-                                <div class="shrink-0 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center font-bold text-lg shadow-lg">3</div>
+                            <!-- Step 3 -->
+                            <div class="flex gap-6">
+                                <span class="w-12 h-12 rounded-xl bg-brand-purple flex items-center justify-center font-bold text-xl shrink-0 shadow-lg shadow-purple-500/20">3</span>
                                 <div>
-                                    <h4 class="font-bold text-xl mb-1">Production</h4>
-                                    <p class="text-purple-200/80 leading-relaxed">We print using high-grade materials and quality-check every piece.</p>
+                                    <h4 class="font-bold text-xl mb-2 text-white">Pickup or Ship</h4>
+                                    <p class="text-purple-200 text-base leading-relaxed opacity-90">Collect your items locally in Surigao City or opt for nationwide shipping.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="bg-white/5 p-8 sm:p-10 rounded-3xl border border-white/10 backdrop-blur-md">
-                        <h3 class="text-2xl font-bold mb-8 text-purple-300">Quick Contact Info</h3>
-                        <div class="space-y-6">
-                            <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                                <span class="text-purple-200/60 font-medium">Location</span>
-                                <span class="text-right font-semibold">Surigao City, PH</span>
-                            </div>
-                            <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                                <span class="text-purple-200/60 font-medium">Response Time</span>
-                                <span class="text-right font-semibold">Under 1 Hour</span>
-                            </div>
-                            <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                                <span class="text-purple-200/60 font-medium">Nationwide</span>
-                                <span class="text-right font-semibold">LBC / J&T</span>
-                            </div>
-                        </div>
-                        <div class="mt-10">
-                            <a href="https://m.me/61558154681608" target="_blank" class="block w-full py-4 bg-purple-500 text-white rounded-2xl text-center font-bold hover:bg-purple-400 transition shadow-xl shadow-purple-900/40 text-lg">
-                                <i class="fab fa-facebook-messenger mr-2"></i> Open Messenger
-                            </a>
-                        </div>
+                    
+                    <!-- Call to Action Card -->
+                    <div class="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-xl text-center">
+                        <img src="https://i.imgur.com/9o3z7ed.jpeg" alt="Logo" class="w-24 h-24 mx-auto mb-6 rounded-full shadow-lg border-2 border-brand-purple">
+                        <h3 class="text-2xl font-bold mb-6">Ready to Create?</h3>
+                        <a href="https://m.me/61558154681608" target="_blank" class="block w-full py-5 bg-brand-purple text-white rounded-2xl text-center font-bold hover:opacity-90 transition text-xl shadow-xl shadow-purple-900/40">
+                            <i class="fab fa-facebook-messenger mr-2"></i> Start Chat
+                        </a>
                     </div>
                 </div>
             </div>
@@ -282,55 +245,47 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-slate-50 border-t border-purple-100 pt-20 pb-8">
+    <footer class="bg-slate-50 border-t border-purple-100 pt-20 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center space-x-2 mb-6">
-                        <div class="bg-purple-600 p-2 rounded-lg">
-                            <i class="fas fa-print text-white"></i>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="https://i.imgur.com/9o3z7ed.jpeg" alt="RWP Logo" class="h-14 w-14 rounded-full">
+                        <div class="flex flex-col">
+                            <span class="text-2xl font-bold tracking-tight text-brand-dark">RIEL Works</span>
+                            <span class="text-xs font-bold text-brand-purple tracking-[0.3em] uppercase">Printing</span>
                         </div>
-                        <span class="text-2xl font-bold tracking-tight">Riel Works <span class="text-purple-600">Printing</span></span>
                     </div>
-                    <p class="text-slate-600 mb-8 max-w-sm text-lg leading-relaxed">Transforming digital designs into physical reality. Based locally, shipping globally.</p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/profile.php?id=61558154681608" target="_blank" class="w-12 h-12 bg-white border border-purple-100 rounded-2xl flex items-center justify-center text-slate-600 hover:text-purple-600 hover:border-purple-600 transition shadow-sm" aria-label="Facebook">
-                            <i class="fab fa-facebook-f text-lg"></i>
-                        </a>
-                        <a href="mailto:elainenikilive@gmail.com" class="w-12 h-12 bg-white border border-purple-100 rounded-2xl flex items-center justify-center text-slate-600 hover:text-purple-600 hover:border-purple-600 transition shadow-sm" aria-label="Email">
-                            <i class="fas fa-envelope text-lg"></i>
-                        </a>
-                        <a href="https://boklot.com.ph" target="_blank" class="w-12 h-12 bg-white border border-purple-100 rounded-2xl flex items-center justify-center text-slate-600 hover:text-purple-600 hover:border-purple-600 transition shadow-sm" aria-label="Website">
-                            <i class="fas fa-globe text-lg"></i>
-                        </a>
-                    </div>
+                    <p class="text-slate-600 mb-8 max-w-sm text-lg leading-relaxed">Your professional printing partner in Surigao City. Transforming your digital thoughts into beautiful physical works.</p>
                 </div>
                 
-                <div class="md:col-span-1">
-                    <h4 class="font-bold text-lg mb-6">Business Hours</h4>
+                <div>
+                    <h4 class="font-bold text-brand-dark mb-6 text-lg">Contact Us</h4>
                     <ul class="space-y-4 text-slate-600">
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-clock text-purple-600"></i>
-                            <span>Always Online</span>
-                        </li>
                         <li class="flex items-start gap-3">
-                            <i class="fas fa-map-marker-alt mt-1 text-purple-600"></i>
-                            <span>San Juan, Surigao City,<br>8400 Philippines</span>
+                            <i class="fas fa-location-dot mt-1 text-brand-purple"></i>
+                            <span class="text-sm">San Juan, Surigao City,<br>8400 Philippines</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-brand-purple"></i>
+                            <span class="text-sm">elainenikilive@gmail.com</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="md:col-span-1">
-                    <h4 class="font-bold text-lg mb-6">Start a Chat</h4>
-                    <a href="https://m.me/61558154681608" target="_blank" class="inline-flex items-center justify-center w-full bg-purple-600 text-white py-4 rounded-2xl font-bold hover:bg-purple-700 transition shadow-lg shadow-purple-200">
-                        <i class="fab fa-facebook-messenger mr-2"></i> Messenger
-                    </a>
+                <div>
+                    <h4 class="font-bold text-brand-dark mb-6 text-lg">Social Media</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=61558154681608" target="_blank" class="w-12 h-12 bg-white border border-purple-100 rounded-xl flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <div class="border-t border-purple-100 pt-8 flex flex-col sm:flex-row justify-between items-center text-slate-400 text-sm gap-4">
-                <p>&copy; 2024 Riel Works Printing. All rights reserved.</p>
-                <p>Website by <a href="https://boklot.com.ph" class="text-purple-600 font-medium hover:underline">boklot.com.ph</a></p>
+            <div class="border-t border-purple-50 pt-10 flex flex-col sm:flex-row justify-between items-center text-slate-400 text-xs gap-4 uppercase tracking-widest font-semibold">
+                <p>&copy; 2024 RIEL Works Printing. All rights reserved.</p>
+                <p>Website by <a href="https://boklot.com.ph" class="text-brand-purple">boklot.com.ph</a></p>
             </div>
         </div>
     </footer>
@@ -341,42 +296,10 @@
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // Toggle body scroll when menu is open
-            if(!mobileMenu.classList.contains('hidden')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
         });
 
-        // Close menu when clicking links
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // Smooth Scroll for local anchors
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                if (this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        const offset = 80;
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
     </script>
 </body>
