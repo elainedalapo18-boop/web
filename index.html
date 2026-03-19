@@ -35,6 +35,7 @@
 
         .service-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
 
         .service-card:hover {
@@ -65,6 +66,11 @@
             filter: drop-shadow(0 0 10px rgba(193, 71, 233, 0.4));
         }
 
+        /* Modal Animation */
+        #imageModal {
+            transition: opacity 0.3s ease-in-out;
+        }
+
         html, body {
             max-width: 100%;
             overflow-x: hidden;
@@ -72,6 +78,16 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
+
+    <!-- Image Modal (Hidden by default) -->
+    <div id="imageModal" class="hidden fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white text-4xl hover:text-brand-purple transition z-[110]">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="relative max-w-5xl w-full h-full flex items-center justify-center" onclick="closeModal()">
+            <img id="modalImg" src="" alt="Portfolio View" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl border border-white/10" onclick="event.stopPropagation()">
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 sticky-nav border-b border-purple-100">
@@ -158,24 +174,24 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Wall Decor -->
-                <div class="service-card bg-white rounded-[2rem] shadow-sm border border-purple-100 flex flex-col h-full overflow-hidden">
+                <!-- Wall Decor (CLICKABLE SECTION - Updated with requested image) -->
+                <div onclick="openModal('https://i.imgur.com/BPGW7cz.jpeg')" class="service-card bg-white rounded-[2rem] shadow-sm border border-purple-100 flex flex-col h-full overflow-hidden">
                     <div class="image-grid">
                         <img src="https://i.imgur.com/gLnXk3e.jpeg" alt="Wall Decor Sample 1" class="service-image">
                         <img src="https://i.imgur.com/tU12n55.jpeg" alt="Wall Decor Sample 2" class="service-image">
                     </div>
                     <div class="p-8 flex flex-col flex-grow">
                         <div class="w-12 h-12 bg-brand-soft text-brand-purple rounded-xl flex items-center justify-center mb-6">
-                            <i class="fas fa-image text-xl"></i>
+                            <i class="fas fa-expand-alt text-xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-brand-dark">Wall Decor & Portraits</h3>
                         <p class="text-slate-600 mb-6 flex-grow">High-definition prints on 3mm Sintra boards. Choose between A3, A4, or A5 sizes.</p>
                         <ul class="space-y-3 text-slate-500 mb-8 text-sm">
                             <li><i class="fas fa-check text-brand-purple mr-2"></i>Sintra Board Mounting</li>
                             <li><i class="fas fa-check text-brand-purple mr-2"></i>Glossy or Matte Finish</li>
-                            <li><i class="fas fa-check text-brand-purple mr-2"></i>Ready to hang</li>
+                            <li><i class="fas fa-eye text-brand-purple mr-2"></i><strong>Click card to view portfolio</strong></li>
                         </ul>
-                        <a href="https://m.me/61558154681608" target="_blank" class="w-full py-4 bg-brand-purple text-white rounded-xl font-bold text-center hover:opacity-90 transition">
+                        <a href="https://m.me/61558154681608" target="_blank" onclick="event.stopPropagation()" class="w-full py-4 bg-brand-purple text-white rounded-xl font-bold text-center hover:opacity-90 transition">
                             Order Now
                         </a>
                     </div>
@@ -198,8 +214,8 @@
                             <li><i class="fas fa-check text-brand-purple mr-2"></i>Personalized Layouts</li>
                             <li><i class="fas fa-check text-brand-purple mr-2"></i>Birthday Giveaways</li>
                         </ul>
-                        <a href="https://m.me/61558154681608" target="_blank" class="w-full py-4 bg-brand-lavender text-brand-dark rounded-xl font-bold text-center hover:opacity-90 transition">
-                            Browse More
+                        <a href="https://m.me/61558154681608" target="_blank" onclick="event.stopPropagation()" class="w-full py-4 bg-brand-lavender text-brand-dark rounded-xl font-bold text-center hover:opacity-90 transition">
+                            Order Now
                         </a>
                     </div>
                 </div>
@@ -221,7 +237,7 @@
                             <li><i class="fas fa-check text-brand-purple mr-2"></i>Thank You Cards</li>
                             <li><i class="fas fa-check text-brand-purple mr-2"></i>Logo Decals</li>
                         </ul>
-                        <a href="https://m.me/61558154681608" target="_blank" class="w-full py-4 bg-brand-soft text-brand-purple border border-purple-100 rounded-xl font-bold text-center hover:bg-brand-lavender transition">
+                        <a href="https://m.me/61558154681608" target="_blank" onclick="event.stopPropagation()" class="w-full py-4 bg-brand-soft text-brand-purple border border-purple-100 rounded-xl font-bold text-center hover:bg-brand-lavender transition">
                             Get a Quote
                         </a>
                     </div>
@@ -323,13 +339,34 @@
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
 
+        // Toggle mobile menu
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
+        // Close menu on link click
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Image Modal Logic
+        function openModal(imgSrc) {
+            modalImg.src = imgSrc;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
         });
     </script>
 </body>
